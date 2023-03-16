@@ -17,7 +17,6 @@ export const App = () => {
         <Route path="/post/edit/:id" element={<PostEdit />} />
         <Route path="*" element={<NotMatching />} />
       </Routes>
-      <h1>Hello World</h1>
     </>
   );
 };

@@ -1,7 +1,11 @@
+import { Footer } from "../views/Footer";
+import { Header } from "../views/Header";
+
 export const Home = () => {
   return (
     <>
-      <h1>AboutPost</h1>
+      <Header />
+      <Footer />
     </>
   );
 };
