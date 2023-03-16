@@ -1,9 +1,9 @@
-import { Navbar } from "./Navbar";
+import { NavBar } from "./NavBar";
 
 export const Header = () => {
   return (
     <>
-      <Navbar />
+      <NavBar />
     </>
   );
 };

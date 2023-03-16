@@ -1,7 +1,10 @@
 export const Footer = () => {
   return (
     <>
-      <h1>Footer</h1>
+      <hr />
+      <p className="text-center text-muted mt-4 mb-4">
+        Copyright &copy; CrudApp 2023{" "}
+      </p>
     </>
   );
 };
