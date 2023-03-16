@@ -1,3 +1,52 @@
 export const initialState = {
-  posts: [],
+  posts: [
+    {
+      id: "1",
+      title: "Article title",
+      shortDescription: "Short description of the article...",
+      content: "Main content of the article",
+      publishedDate: "16-03-2023",
+      author: "John Doe",
+    },
+    {
+      id: "2",
+      title: "Article title",
+      shortDescription: "Short description of the article...",
+      content: "Main content of the article",
+      publishedDate: "16-03-2023",
+      author: "John Doe",
+    },
+    {
+      id: "3",
+      title: "Article title",
+      shortDescription: "Short description of the article...",
+      content: "Main content of the article",
+      publishedDate: "16-03-2023",
+      author: "John Doe",
+    },
+    {
+      id: "4",
+      title: "Article title",
+      shortDescription: "Short description of the article...",
+      content: "Main content of the article",
+      publishedDate: "16-03-2023",
+      author: "John Doe",
+    },
+    {
+      id: "5",
+      title: "Article title",
+      shortDescription: "Short description of the article...",
+      content: "Main content of the article",
+      publishedDate: "16-03-2023",
+      author: "John Doe",
+    },
+    {
+      id: "6",
+      title: "Article title",
+      shortDescription: "Short description of the article...",
+      content: "Main content of the article",
+      publishedDate: "16-03-2023",
+      author: "John Doe",
+    },
+  ],
 };
