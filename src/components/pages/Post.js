@@ -13,22 +13,32 @@ export const Post = () => {
   if (!postData) return <Navigate to="/" />;
   return (
     <>
-      <Row>
-        <Col>
+      <Row className="d-flex justify-content-center">
+        <Col xs="8" sm="6">
           <h1>{postData.title}</h1>
+          <p>
+            <b>Author: {""}</b>
+            {postData.author}
+            <br />
+            <b>Published: {""}</b>
+            {postData.publishedDate}
+          </p>
+          <p>{postData.content}</p>
         </Col>
-        <Col className="d-flex justify-content-end align-items-center">
+        <Col xs="4" className="d-flex justify-content-end align-items-baseline">
           <Button
             className="mx-2"
             variant="outline-success"
             as={NavLink}
-            to={`edit/:${id}`}
+            to={`/post/edit/${id}`}
           >
             Edit
           </Button>
           <Button variant="outline-danger">Delete</Button>
         </Col>
       </Row>
+
+      <Col className="d-flex justify-content-center"></Col>
     </>
   );
 };
