@@ -2,13 +2,18 @@ import { useParams, Navigate, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectPostById } from "../../redux/postsRedux";
 import { Row, Col, Button } from "react-bootstrap";
+import { useState } from "react";
+import { RemovePostModal } from "../features/RemoveModal";
 
 export const Post = () => {
+  const [modalShow, setModalShow] = useState(false);
+
+  const removePost = () => {
+    setModalShow(false);
+  };
+
   const { id } = useParams();
-
   const postData = useSelector((state) => selectPostById(state, id));
-
-  console.log(postData);
 
   if (!postData) return <Navigate to="/" />;
   return (
@@ -38,11 +43,16 @@ export const Post = () => {
           >
             Edit
           </Button>
-          <Button variant="outline-danger">Delete</Button>
+          <Button variant="outline-danger" onClick={() => setModalShow(true)}>
+            Delete
+          </Button>
         </Col>
       </Row>
-
-      <Col className="d-flex justify-content-center"></Col>
+      <RemovePostModal
+        show={modalShow}
+        onCancel={() => setModalShow(false)}
+        onRemove={() => removePost()}
+      />
     </>
   );
 };

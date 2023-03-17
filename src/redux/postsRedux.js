@@ -9,6 +9,9 @@ const createActionName = (actionName) => `app/posts/${actionName}`;
 /* ACTION CREATORS */
 export const postsReducer = (statePart = [], action) => {
   switch (action.type) {
+    case createActionName("REMOVE_POST"):
+      
+
     default:
       return statePart;
   }
