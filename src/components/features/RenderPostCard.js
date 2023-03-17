@@ -1,8 +1,5 @@
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import { Card, Button, Col, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import { useSelector } from "react-redux";
 import { selectAllPosts } from "../../redux/postsRedux";
 
@@ -18,9 +15,9 @@ export const RenderPostCard = () => {
               <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>
-                  <b>Author:</b> {author},
+                  <b>Author:</b> {author}
                   <br />
-                  <b>Published:</b> {publishedDate},
+                  <b>Published:</b> {publishedDate}
                   <br />
                   <br />
                   {shortDescription.slice(0, 32).padEnd(35, ".")}

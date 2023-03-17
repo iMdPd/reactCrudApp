@@ -1,6 +1,4 @@
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+import { Button, Col, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { RenderPostCard } from "../features/RenderPostCard";
 
