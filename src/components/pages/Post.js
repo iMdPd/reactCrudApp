@@ -25,7 +25,11 @@ export const Post = () => {
           </p>
           <p>{postData.content}</p>
         </Col>
-        <Col xs="4" className="d-flex justify-content-end align-items-baseline">
+        <Col
+          md="2"
+          xs="4"
+          className="d-flex justify-content-end align-items-baseline"
+        >
           <Button
             className="mx-2"
             variant="outline-success"
