@@ -9,10 +9,12 @@ import { PostEdit } from "./components/pages/PostEdit";
 import { Footer } from "./components/views/Footer";
 import { Header } from "./components/views/Header";
 
+import styles from "./styles/App.module.scss";
+
 export const App = () => {
   return (
     <>
-      <Container>
+      <Container className={styles.container}>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
