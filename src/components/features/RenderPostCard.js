@@ -20,7 +20,7 @@ export const RenderPostCard = () => {
                   <b>Published:</b> {publishedDate}
                   <br />
                   <br />
-                  {shortDescription.slice(0, 32).padEnd(35, ".")}
+                  {shortDescription}
                 </Card.Text>
                 <Col className="d-flex justify-content-center">
                   <Button variant="primary" as={NavLink} to={`post/${id}`}>

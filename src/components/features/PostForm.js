@@ -22,19 +22,18 @@ export const PostForm = () => {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
+      event.preventDefault();
       event.stopPropagation();
+      setValidated(true);
+    } else {
+      dispatch(
+        addPost({ title, author, publishedDate, shortDescription, mainContent })
+      );
+
+      navigate("/");
     }
-    setValidated(true);
-
-    dispatch(
-      addPost({ title, author, publishedDate, shortDescription, mainContent })
-    );
-
-    navigate("/");
   };
 
   return (
