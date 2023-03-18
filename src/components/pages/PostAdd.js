@@ -1,4 +1,4 @@
-import { Col, Form, Button, Feedback } from "react-bootstrap";
+import { Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 
 export const PostAdd = () => {
