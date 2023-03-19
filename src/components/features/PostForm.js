@@ -17,7 +17,7 @@ export const PostForm = () => {
   const [author, setAuthor] = useState("");
   const [publishedDate, setPublishedDate] = useState(date);
   const [shortDescription, setShortDescription] = useState("");
-  const [mainContent, setMainContent] = useState("");
+  const [content, setContent] = useState("");
 
   const [validated, setValidated] = useState(false);
 
@@ -29,7 +29,7 @@ export const PostForm = () => {
       setValidated(true);
     } else {
       dispatch(
-        addPost({ title, author, publishedDate, shortDescription, mainContent })
+        addPost({ title, author, publishedDate, shortDescription, content })
       );
 
       navigate("/");
@@ -109,10 +109,10 @@ export const PostForm = () => {
           <Form.Label>Main Content :</Form.Label>
           <Form.Control
             as="textarea"
-            value={mainContent}
+            value={content}
             rows={6}
             required
-            onChange={(e) => setMainContent(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
