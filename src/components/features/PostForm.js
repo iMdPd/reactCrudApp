@@ -1,21 +1,21 @@
 import { Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 
-export const PostForm = ({ action, actionText, props }) => {
+export const PostForm = ({ action, ...params }) => {
   const current = new Date();
   const date = `${current.getDate()}-0${
     current.getMonth() + 1
   }-${current.getFullYear()}`;
 
-  const [title, setTitle] = useState(props.title || "");
-  const [author, setAuthor] = useState(props.author || "");
+  const [title, setTitle] = useState(params.title || "");
+  const [author, setAuthor] = useState(params.author || "");
   const [publishedDate, setPublishedDate] = useState(
-    props.publishedDate || date
+    params.publishedDate || date
   );
   const [shortDescription, setShortDescription] = useState(
-    props.shortDescription || ""
+    params.shortDescription || ""
   );
-  const [content, setContent] = useState(props.content || "");
+  const [content, setContent] = useState(params.content || "");
 
   const [validated, setValidated] = useState(false);
 
