@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removePost, selectPostById } from "../../redux/postsRedux";
 import { Row, Col, Button } from "react-bootstrap";
 import { useState } from "react";
-import { RemovePostModal } from "../features/RemoveModal";
+import { RemovePostModal } from "../features/RemovePostModal";
 
 export const Post = () => {
   const { id } = useParams();

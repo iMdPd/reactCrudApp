@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addPost } from "../../redux/postsRedux";
 import { useNavigate } from "react-router-dom";
 
-export const PostForm = () => {
+export const PostForm = ({ action, actionText, ...props }) => {
   const current = new Date();
   const date = `${current.getDate()}-0${
     current.getMonth() + 1
@@ -13,11 +13,15 @@ export const PostForm = () => {
 
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [publishedDate, setPublishedDate] = useState(date);
-  const [shortDescription, setShortDescription] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState(props.title || "");
+  const [author, setAuthor] = useState(props.author || "");
+  const [publishedDate, setPublishedDate] = useState(
+    props.publishedDate || date
+  );
+  const [shortDescription, setShortDescription] = useState(
+    props.shortDescription || ""
+  );
+  const [content, setContent] = useState(props.content || "");
 
   const [validated, setValidated] = useState(false);
 
@@ -28,11 +32,7 @@ export const PostForm = () => {
       event.stopPropagation();
       setValidated(true);
     } else {
-      dispatch(
-        addPost({ title, author, publishedDate, shortDescription, content })
-      );
-
-      navigate("/");
+      action({ title, author, publishedDate, shortDescription, content });
     }
   };
 
@@ -40,7 +40,6 @@ export const PostForm = () => {
     <>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Col md={6}>
-          <h1>Add Post</h1>
           <Form.Group className="mb-3" controlId="formTitle">
             <Form.Label>Title :</Form.Label>
             <Form.Control
@@ -116,7 +115,7 @@ export const PostForm = () => {
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
-            Please fill this field with post short description.
+            Please fill this field with post main content.
           </Form.Control.Feedback>
         </Form.Group>
         <Button variant="primary" type="submit">
