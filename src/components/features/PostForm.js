@@ -1,17 +1,11 @@
 import { Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addPost } from "../../redux/postsRedux";
-import { useNavigate } from "react-router-dom";
 
-export const PostForm = ({ action, actionText, ...props }) => {
+export const PostForm = ({ action, actionText, props }) => {
   const current = new Date();
   const date = `${current.getDate()}-0${
     current.getMonth() + 1
   }-${current.getFullYear()}`;
-  const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const [title, setTitle] = useState(props.title || "");
   const [author, setAuthor] = useState(props.author || "");

@@ -19,7 +19,7 @@ export const PostAdd = () => {
         <Row>
           <h1>Add Post</h1>
         </Row>
-        <PostForm action={handleSubmit} actionText="Add post" />
+        <PostForm action={handleSubmit} actionText="Add post"  />
       </Col>
     </div>
   );
