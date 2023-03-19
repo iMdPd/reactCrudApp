@@ -89,7 +89,7 @@ export const PostForm = ({ action, ...params }) => {
             value={shortDescription}
             rows={2}
             required
-            maxLength="32"
+            maxLength="35"
             onChange={(e) => setShortDescription(e.target.value)}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
