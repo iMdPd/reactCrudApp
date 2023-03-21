@@ -1,5 +1,5 @@
 import { Result } from "antd";
-import { Button } from "react-bootstrap";
+import { Button } from "bootstrap";
 import { NavLink } from "react-router-dom";
 
 export const NotMatching = () => {
