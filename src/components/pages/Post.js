@@ -4,6 +4,7 @@ import { removePost, selectPostById } from "../../redux/postsRedux";
 import { Row, Col, Button } from "react-bootstrap";
 import { useState } from "react";
 import { RemovePostModal } from "../features/RemovePostModal";
+import { DateToStr } from "../../utils/DateToStr";
 
 export const Post = () => {
   const { id } = useParams();
@@ -28,7 +29,7 @@ export const Post = () => {
             {postData.author}
             <br />
             <b>Published: {""}</b>
-            {postData.publishedDate}
+            {DateToStr(postData.publishedDate)}
           </p>
           <p dangerouslySetInnerHTML={{ __html: postData.content }}></p>
         </Col>

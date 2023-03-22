@@ -64,6 +64,7 @@ export const PostForm = ({ action, ...params }) => {
           <Form.Group className="mb-3" controlId="formDate">
             <Form.Label>Published :</Form.Label>
             <DatePicker
+              dateFormat="dd-MM-yyyy"
               selected={publishedDate}
               onChange={(date) => setPublishedDate(date)}
             />

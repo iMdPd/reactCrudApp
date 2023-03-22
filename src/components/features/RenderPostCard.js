@@ -2,6 +2,7 @@ import { Card, Button, Col, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectAllPosts } from "../../redux/postsRedux";
+import { DateToStr } from "../../utils/DateToStr";
 
 export const RenderPostCard = () => {
   const posts = useSelector(selectAllPosts);
@@ -17,7 +18,7 @@ export const RenderPostCard = () => {
                 <Card.Text>
                   <b>Author:</b> {author}
                   <br />
-                  <b>Published:</b> {publishedDate}
+                  <b>Published:</b> {DateToStr(publishedDate)}
                   <br />
                   <br />
                   {shortDescription}

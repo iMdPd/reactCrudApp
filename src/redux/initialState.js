@@ -5,7 +5,7 @@ export const initialState = {
       title: "Article title",
       shortDescription: "Short description of the article...",
       content: "Main content of the article",
-      publishedDate: "16-03-2023",
+      publishedDate: new Date("2023-03-16"),
       author: "John Doe",
     },
     {
@@ -13,7 +13,7 @@ export const initialState = {
       title: "Article title",
       shortDescription: "Short description of the article...",
       content: "Main content of the article",
-      publishedDate: "16-03-2023",
+      publishedDate: new Date("2023-03-16"),
       author: "John Doe",
     },
     {
@@ -21,7 +21,7 @@ export const initialState = {
       title: "Article title",
       shortDescription: "Short description of the article...",
       content: "Main content of the article",
-      publishedDate: "16-03-2023",
+      publishedDate: new Date("2023-03-16"),
       author: "John Doe",
     },
     {
@@ -29,7 +29,7 @@ export const initialState = {
       title: "Article title",
       shortDescription: "Short description of the article...",
       content: "Main content of the article",
-      publishedDate: "16-03-2023",
+      publishedDate: new Date("2023-03-16"),
       author: "John Doe",
     },
     {
@@ -37,7 +37,7 @@ export const initialState = {
       title: "Article title",
       shortDescription: "Short description of the article...",
       content: "Main content of the article",
-      publishedDate: "16-03-2023",
+      publishedDate: new Date("2023-03-16"),
       author: "John Doe",
     },
     {
@@ -45,7 +45,7 @@ export const initialState = {
       title: "Article title",
       shortDescription: "Short description of the article...",
       content: "Main content of the article",
-      publishedDate: "16-03-2023",
+      publishedDate: new Date("2023-03-16"),
       author: "John Doe",
     },
   ],
