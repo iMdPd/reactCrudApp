@@ -30,7 +30,7 @@ export const Post = () => {
             <b>Published: {""}</b>
             {postData.publishedDate}
           </p>
-          <p>{postData.content}</p>
+          <p dangerouslySetInnerHTML={{ __html: postData.content }}></p>
         </Col>
         <Col
           md="2"
