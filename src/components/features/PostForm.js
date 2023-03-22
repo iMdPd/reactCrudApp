@@ -90,6 +90,18 @@ export const PostForm = ({ action, ...params }) => {
               </small>
             )}
           </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formCategory">
+            <Form.Label>Category :</Form.Label>
+            <Form.Select aria-label="Select category" defaultValue={"selected"}>
+              <option value="selected" disabled>
+                Select Category
+              </option>
+              <option value="sport">Sport</option>
+              <option value="news">News</option>
+              <option value="movies">Movies</option>
+            </Form.Select>
+          </Form.Group>
         </Col>
 
         <Form.Group className="mb-3" controlId="formShortDescription">
