@@ -27,6 +27,10 @@ export const PostForm = ({ action, ...params }) => {
     formState: { errors },
   } = useForm();
 
+  const formValidation = (length) => {
+    return { minLength: length, required: true };
+  };
+
   return (
     <>
       <Form noValidate onSubmit={validate(handleSubmit)}>
@@ -34,7 +38,7 @@ export const PostForm = ({ action, ...params }) => {
           <Form.Group className="mb-3" controlId="formTitle">
             <Form.Label>Title :</Form.Label>
             <Form.Control
-              {...register("title", { required: true })}
+              {...register("title", formValidation(3))}
               type="text"
               value={title}
               placeholder="Enter post Title"
@@ -43,7 +47,7 @@ export const PostForm = ({ action, ...params }) => {
             />
             {errors.title && (
               <small className="d-block form-text text-danger mt-2">
-                This field is required
+                This field is too short. You have to put more than 3 chars.
               </small>
             )}
           </Form.Group>
@@ -51,12 +55,18 @@ export const PostForm = ({ action, ...params }) => {
           <Form.Group className="mb-3" controlId="formAuthor">
             <Form.Label>Author :</Form.Label>
             <Form.Control
+              {...register("author", formValidation(3))}
               type="text"
               value={author}
               placeholder="Enter post Author"
               onChange={(e) => setAuthor(e.target.value)}
               required
             />
+            {errors.author && (
+              <small className="d-block form-text text-danger mt-2">
+                This field is too short. You have to put more than 3 chars.
+              </small>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formDate">
@@ -73,6 +83,7 @@ export const PostForm = ({ action, ...params }) => {
         <Form.Group className="mb-3" controlId="formShortDescription">
           <Form.Label>Short Description :</Form.Label>
           <Form.Control
+            {...register("descript", formValidation(20))}
             as="textarea"
             value={shortDescription}
             rows={2}
@@ -80,6 +91,11 @@ export const PostForm = ({ action, ...params }) => {
             maxLength="35"
             onChange={(e) => setShortDescription(e.target.value)}
           />
+          {errors.descript && (
+            <small className="d-block form-text text-danger mt-2">
+              This field is a way too short. You have to put more than 20 chars.
+            </small>
+          )}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formMainContent">
