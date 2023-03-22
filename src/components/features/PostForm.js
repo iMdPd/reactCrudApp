@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 export const PostForm = ({ action, ...params }) => {
   const [title, setTitle] = useState(params.title || "");
   const [author, setAuthor] = useState(params.author || "");
+  const [category, setCategory] = useState(params.category || "selected");
   const [publishedDate, setPublishedDate] = useState(
     params.publishedDate || ""
   );
@@ -34,7 +35,14 @@ export const PostForm = ({ action, ...params }) => {
     setDateError(!publishedDate);
 
     if (content && publishedDate) {
-      action({ title, author, publishedDate, shortDescription, content });
+      action({
+        title,
+        author,
+        category,
+        publishedDate,
+        shortDescription,
+        content,
+      });
     }
   };
 
@@ -93,7 +101,10 @@ export const PostForm = ({ action, ...params }) => {
 
           <Form.Group className="mb-3" controlId="formCategory">
             <Form.Label>Category :</Form.Label>
-            <Form.Select aria-label="Select category" defaultValue={"selected"}>
+            <Form.Select
+              aria-label="Select category"
+              defaultValue={category.toLowerCase()}
+            >
               <option value="selected" disabled>
                 Select Category
               </option>
