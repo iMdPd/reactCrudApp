@@ -102,15 +102,16 @@ export const PostForm = ({ action, ...params }) => {
           <Form.Group className="mb-3" controlId="formCategory">
             <Form.Label>Category :</Form.Label>
             <Form.Select
+              onChange={(e) => setCategory(e.target.value)}
               aria-label="Select category"
-              defaultValue={category.toLowerCase()}
+              defaultValue={category}
             >
               <option value="selected" disabled>
                 Select Category
               </option>
-              <option value="sport">Sport</option>
-              <option value="news">News</option>
-              <option value="movies">Movies</option>
+              <option value="Sport">Sport</option>
+              <option value="News">News</option>
+              <option value="Movies">Movies</option>
             </Form.Select>
           </Form.Group>
         </Col>
