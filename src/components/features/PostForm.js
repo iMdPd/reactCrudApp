@@ -84,7 +84,7 @@ export const PostForm = ({ action, ...params }) => {
               selected={publishedDate}
               onChange={(date) => setPublishedDate(date)}
             />
-            {contentError && (
+            {dateError && (
               <small className="d-block form-text text-danger mt-2">
                 Content can't be empty
               </small>
