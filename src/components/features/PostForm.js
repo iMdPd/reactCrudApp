@@ -1,7 +1,9 @@
 import { Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { TextArea } from "./TextArea";
+import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
+import styles from "../../styles/Form.module.scss";
 import "react-datepicker/dist/react-datepicker.css";
 
 export const PostForm = ({ action, ...params }) => {
@@ -19,6 +21,12 @@ export const PostForm = ({ action, ...params }) => {
     event.preventDefault();
     action({ title, author, publishedDate, shortDescription, content });
   };
+
+  const {
+    register,
+    handleSubmit: validate,
+    formState: { errors },
+  } = useForm();
 
   return (
     <>
@@ -49,6 +57,7 @@ export const PostForm = ({ action, ...params }) => {
           <Form.Group className="mb-3" controlId="formDate">
             <Form.Label>Published :</Form.Label>
             <DatePicker
+              className={styles.datePicker}
               dateFormat="dd-MM-yyyy"
               selected={publishedDate}
               onChange={(date) => setPublishedDate(date)}
