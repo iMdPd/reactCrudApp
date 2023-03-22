@@ -1,5 +1,6 @@
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import styles from "../../styles/Form.module.scss";
 
 export const TextArea = ({ content, setContent }) => {
   const modules = {
@@ -20,10 +21,11 @@ export const TextArea = ({ content, setContent }) => {
   return (
     <>
       <ReactQuill
+        className={styles.quill}
         modules={modules}
         theme="snow"
-        value={content}
         placeholder="Content goes here..."
+        value={content}
         onChange={setContent}
       />
     </>

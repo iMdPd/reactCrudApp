@@ -18,7 +18,6 @@ export const PostForm = ({ action, ...params }) => {
   const [content, setContent] = useState(params.content || "");
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     action({ title, author, publishedDate, shortDescription, content });
   };
 
@@ -30,17 +29,23 @@ export const PostForm = ({ action, ...params }) => {
 
   return (
     <>
-      <Form noValidate onSubmit={handleSubmit}>
+      <Form noValidate onSubmit={validate(handleSubmit)}>
         <Col md={6}>
           <Form.Group className="mb-3" controlId="formTitle">
             <Form.Label>Title :</Form.Label>
             <Form.Control
+              {...register("title", { required: true })}
               type="text"
               value={title}
               placeholder="Enter post Title"
               onChange={(e) => setTitle(e.target.value)}
               required
             />
+            {errors.title && (
+              <small className="d-block form-text text-danger mt-2">
+                This field is required
+              </small>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formAuthor">
@@ -79,7 +84,7 @@ export const PostForm = ({ action, ...params }) => {
 
         <Form.Group className="mb-3" controlId="formMainContent">
           <Form.Label>Main Content :</Form.Label>
-          <TextArea content={(content, setContent)} />
+          <TextArea content={content} setContent={setContent} />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
