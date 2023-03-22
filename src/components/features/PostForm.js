@@ -14,22 +14,15 @@ export const PostForm = ({ action, ...params }) => {
     params.shortDescription || ""
   );
   const [content, setContent] = useState(params.content || "");
-  const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-      setValidated(true);
-    } else {
-      action({ title, author, publishedDate, shortDescription, content });
-    }
+    event.preventDefault();
+    action({ title, author, publishedDate, shortDescription, content });
   };
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Form noValidate onSubmit={handleSubmit}>
         <Col md={6}>
           <Form.Group className="mb-3" controlId="formTitle">
             <Form.Label>Title :</Form.Label>
@@ -40,10 +33,6 @@ export const PostForm = ({ action, ...params }) => {
               onChange={(e) => setTitle(e.target.value)}
               required
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid">
-              Please input post Title.
-            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formAuthor">
@@ -55,10 +44,6 @@ export const PostForm = ({ action, ...params }) => {
               onChange={(e) => setAuthor(e.target.value)}
               required
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid">
-              Please input post Author.
-            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formDate">
@@ -81,10 +66,6 @@ export const PostForm = ({ action, ...params }) => {
             maxLength="35"
             onChange={(e) => setShortDescription(e.target.value)}
           />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">
-            Please input short description.
-          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formMainContent">
