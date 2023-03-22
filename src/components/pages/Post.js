@@ -30,6 +30,9 @@ export const Post = () => {
             <br />
             <b>Published: {""}</b>
             {DateToStr(postData.publishedDate)}
+            <br />
+            <b>Category: {""}</b>
+            {postData.category}
           </p>
           <p dangerouslySetInnerHTML={{ __html: postData.content }}></p>
         </Col>
