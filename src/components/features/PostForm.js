@@ -1,24 +1,19 @@
 import { Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import { TextArea } from "./TextArea";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export const PostForm = ({ action, ...params }) => {
-  const current = new Date();
-  const date = `${current.getDate()}-0${
-    current.getMonth() + 1
-  }-${current.getFullYear()}`;
-
   const [title, setTitle] = useState(params.title || "");
   const [author, setAuthor] = useState(params.author || "");
   const [publishedDate, setPublishedDate] = useState(
-    params.publishedDate || date
+    params.publishedDate || ""
   );
   const [shortDescription, setShortDescription] = useState(
     params.shortDescription || ""
   );
   const [content, setContent] = useState(params.content || "");
-
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
@@ -30,21 +25,6 @@ export const PostForm = ({ action, ...params }) => {
     } else {
       action({ title, author, publishedDate, shortDescription, content });
     }
-  };
-
-  const modules = {
-    toolbar: [
-      [{ font: [] }],
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      ["bold", "italic", "underline", "strike"],
-      [{ color: [] }, { background: [] }],
-      [{ script: "sub" }, { script: "super" }],
-      ["blockquote", "code-block"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
-      ["link"],
-      ["clean"],
-    ],
   };
 
   return (
@@ -83,19 +63,10 @@ export const PostForm = ({ action, ...params }) => {
 
           <Form.Group className="mb-3" controlId="formDate">
             <Form.Label>Published :</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter published date"
-              value={publishedDate}
-              onChange={(e) => setPublishedDate(e.target.value)}
-              maxLength="10"
-              minLength="10"
-              required
+            <DatePicker
+              selected={publishedDate}
+              onChange={(date) => setPublishedDate(date)}
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid">
-              Please input published date in format DD-MM-RRRR.
-            </Form.Control.Feedback>
           </Form.Group>
         </Col>
 
@@ -111,23 +82,13 @@ export const PostForm = ({ action, ...params }) => {
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
-            Please fill this field with post short description.
+            Please input short description.
           </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formMainContent">
           <Form.Label>Main Content :</Form.Label>
-          <ReactQuill
-            modules={modules}
-            theme="snow"
-            value={content}
-            placeholder="Content goes here..."
-            onChange={setContent}
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">
-            Please fill this field with post main content.
-          </Form.Control.Feedback>
+          <TextArea content={(content, setContent)} />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
