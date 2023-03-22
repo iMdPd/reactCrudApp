@@ -16,10 +16,8 @@ export const PostForm = ({ action, ...params }) => {
     params.shortDescription || ""
   );
   const [content, setContent] = useState(params.content || "");
-
-  const handleSubmit = (event) => {
-    action({ title, author, publishedDate, shortDescription, content });
-  };
+  const [contentError, setContentError] = useState(false);
+  const [dateError, setDateError] = useState(false);
 
   const {
     register,
@@ -29,6 +27,15 @@ export const PostForm = ({ action, ...params }) => {
 
   const formValidation = (length) => {
     return { minLength: length, required: true };
+  };
+
+  const handleSubmit = () => {
+    setContentError(!content);
+    setDateError(!publishedDate);
+
+    if (content && publishedDate) {
+      action({ title, author, publishedDate, shortDescription, content });
+    }
   };
 
   return (
@@ -77,6 +84,11 @@ export const PostForm = ({ action, ...params }) => {
               selected={publishedDate}
               onChange={(date) => setPublishedDate(date)}
             />
+            {contentError && (
+              <small className="d-block form-text text-danger mt-2">
+                Content can't be empty
+              </small>
+            )}
           </Form.Group>
         </Col>
 
@@ -101,6 +113,11 @@ export const PostForm = ({ action, ...params }) => {
         <Form.Group className="mb-3" controlId="formMainContent">
           <Form.Label>Main Content :</Form.Label>
           <TextArea content={content} setContent={setContent} />
+          {contentError && (
+            <small className="d-block form-text text-danger mt-2">
+              Content can't be empty
+            </small>
+          )}
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
