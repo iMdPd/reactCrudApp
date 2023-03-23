@@ -102,6 +102,9 @@ export const PostForm = ({ action, ...params }) => {
           <Form.Group className="mb-3" controlId="formCategory">
             <Form.Label>Category :</Form.Label>
             <Form.Select
+              {...register("category", {
+                validate: (value) => value !== "selected",
+              })}
               onChange={(e) => setCategory(e.target.value)}
               aria-label="Select category"
               defaultValue={category}
@@ -113,6 +116,11 @@ export const PostForm = ({ action, ...params }) => {
               <option value="News">News</option>
               <option value="Movies">Movies</option>
             </Form.Select>
+            {errors.category && (
+              <small className="d-block form-text text-danger mt-2">
+                Please select a category.
+              </small>
+            )}
           </Form.Group>
         </Col>
 
